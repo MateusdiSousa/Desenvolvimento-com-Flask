@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-notas = {'Mariana':10, 'Sérgio':5, 'Mateus':9, 'Cláudia':10}
+notas = {}
+registro = []
 lista = [] 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -11,9 +12,13 @@ def main():
             lista.append(request.form.get('fruta'))
     return render_template('index.html', lista = lista)
 
-@app.route('/nota')
+@app.route('/nota', methods = ['GET', 'POST'])
 def nota():
-    return render_template('alunos.html', notas = notas)
+    global registro
+    if request.method == 'POST':
+        if request.form.get('aluno') and request.form.get("nota"):
+            registro.append({request.form.get('aluno'):request.form.get("nota")})
+    return render_template('alunos.html', registro = registro)
 
 if '__name__' == ('__main__'):
     app.run(debug = True)

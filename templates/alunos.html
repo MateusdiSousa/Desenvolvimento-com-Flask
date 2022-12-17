@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dicionário</title>
-</head>
-<body>
-    <ol>
-        {% for x, y in notas.items() %}
-            <details>
-                <summary>{{x}}</summary>
-                <p>{{y}}</p>
-            </details>
+{% extends 'base.html' %}
+{% block conteudo %}
+   <ol>
+        {% for x in registro %}
+            {% for chave, nota in x.items() %}
+                <details>
+                    <summary>{{chave}}</summary>
+                    <p>{{nota}}</p>
+                </details>
+            {% endfor %}
         {% endfor %}
     </ol>
-</body>
-</html>
+    <form method="POST" action="/nota">
+        <label for="aluno">Nome</label>
+        <input name="aluno" type="text">
+
+        <label for="nota">Nota</label>
+        <input type="number" name="nota">
+
+        <button>Adicionar</button>
+    </form>
+{% endblock conteudo %}
