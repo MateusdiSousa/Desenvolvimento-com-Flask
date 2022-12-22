@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integração HTML</title>
-</head>
+{% extends 'base.html' %}
+{% block conteudo %}
 <body>
-    <h3>Lista de frutas</h3>
+    <h3 style="text-align: center;">Lista de frutas</h3>
+    <hr>
     <ul>
         {% for x in lista %}
             <li>{{x}}</li>
@@ -15,9 +10,13 @@
     </ul>
     
     <form action="/" method="POST">
-        <label for="fruta">Fruta</label>
-        <input type="text" name="fruta" id="fruta">
-        <button>Adicionar</button>
+        <div class="mb-3">
+            <label class="form-label" for="fruta">Fruta</label>
+            <input class="form-control" type="text" name="fruta" id="fruta">
+        </div>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
     </form>
 </body>
 </html>
+
+{% endblock conteudo %}
