@@ -53,9 +53,20 @@ def nota():
             registro.append({request.form.get('aluno'):request.form.get("nota")})
     return render_template('alunos.html', registro = registro)
 
-@app.route('/cursos', methods = ['POST', 'GET'])
+@app.route('/cursos')
 def curso():
     return  render_template('cursos.html',cursos = cursos.query.all())
+
+@app.route('/criar_curso', methods = ['GET','POST'])
+def add_curso():
+    nome = request.form.get('nome')
+    desc = request.form.get("descricao")
+    ch = request.form.get('carga_h')
+    if request.method == 'POST':
+        curso = cursos(nome, desc, ch)
+        db.session.add(curso)
+        db.session.commit()
+    return render_template("addcurso.html")
 
 if '__name__' == '__main__':
     app.run(debug = True)

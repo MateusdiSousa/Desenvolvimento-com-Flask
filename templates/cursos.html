@@ -2,8 +2,7 @@
 {% block conteudo %}
 <h1 style="text-align: center;">Lista de Cursos</h1>
 <hr>
-<ul>
-    <table class="table table-hover table-bordered ">
+      <table class="table table-hover table-bordered ">
         <thead>
           <tr>
             <th scope="col">Id</th>
@@ -22,6 +21,6 @@
           </tr>
           {% endfor %}
         </tbody>
-</ul>
-
+      </table>
+<a href="{{url_for('add_curso')}}"><button type="button" class="btn btn-primary">Adicionar cursos</button></a>
 {% endblock conteudo %}
