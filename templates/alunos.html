@@ -24,7 +24,9 @@
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample_{{dados.chave}}" role="button" aria-expanded="false" aria-controls="collapseExample{{dados.chave}}">
                     {{dados.aluno}}
                     </a>
-                </p>
+                <a class = "btn btn-secondary"href="/{{dados.chave}}/nota">Atualizar</a>
+                <a class="btn btn-danger btn-xl"  href="{{url_for('delete_nota', chave = dados.chave)}}">Delete</a>
+
                 <div class="collapse" id="collapseExample_{{dados.chave}}">
                     <div class="card card-body">
                     {{dados.nota}}

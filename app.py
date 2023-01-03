@@ -76,6 +76,24 @@ def nota():
         return redirect(url_for('nota'))
     return render_template('alunos.html', registros = notas.query.all())
 
+@app.route("/<int:chave>/nota", methods = ['GET', 'POST'])
+def nota_att(chave):
+    registro = notas.query.filter_by(chave = chave).first()
+    if request.method == 'POST':
+        aluno = request.form.get("aluno")
+        nota = request.form.get('nota')
+        notas.query.filter_by(chave = chave).update({'aluno':aluno, 'nota':nota})
+        db.session.commit()
+        return redirect(url_for('nota'))
+    return render_template('nota_att.html', registro = registro)
+
+@app.route("/<int:chave>/nota/delete")
+def delete_nota(chave):
+    aluno = notas.query.filter_by(chave= chave).first()
+    db.session.delete(aluno)
+    db.session.commit()
+    return redirect(url_for('nota'))
+
 @app.route('/cursos')
 def curso():
     return  render_template('cursos.html',cursos = cursos.query.all())
