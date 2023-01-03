@@ -1,19 +1,26 @@
 {% extends 'base.html' %}
 {% block conteudo %}
+
+{%- for mensagem in get_flashed_messages() %}
+<div class="alert alert-danger" role="alert">
+  {{mensagem}}
+</div>
+{%- endfor  %}
+
 <form action="{{url_for('add_curso')}}"  method="POST">
     <div class="mb-3">
       <label for="nome" class="form-label"> Nome do Curso</label>
-      <input type="text" class="form-control" aria-describedby="nome do curso" name="nome" required>
+      <input type="text" class="form-control" aria-describedby="nome do curso" name="nome">
     </div>
 
     <div class="mb-3">
         <label for="descricao" class="form-label">Descrição</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descricao" required></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descricao"></textarea>
       </div>
 
     <div class="mb-3">
         <label for="carga_h" class="form-label">Carga Horária</label>
-        <input placeholder="Horas" type="number" name="carga_h" class="form-control" id="exampleInputPassword1" required>
+        <input placeholder="Horas" type="number" name="carga_h" class="form-control" id="exampleInputPassword1">
     </div>
     <button type="submit" class="btn btn-primary">Adicionar</button>
 </form>

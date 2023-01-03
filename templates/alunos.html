@@ -18,21 +18,19 @@
     </form>
 
     <div style="margin-top: 10px;">
-        {% for dados in registro %}
-            {% for nome, nota in dados.items()  %}
+        {% for dados in registros %}
             <div style="margin-top: 10px;">
                 <p>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample_{{nome}}" role="button" aria-expanded="false" aria-controls="collapseExample{{nome}}">
-                    {{nome}}
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample_{{dados.chave}}" role="button" aria-expanded="false" aria-controls="collapseExample{{dados.chave}}">
+                    {{dados.aluno}}
                     </a>
                 </p>
-                <div class="collapse" id="collapseExample_{{nome}}">
+                <div class="collapse" id="collapseExample_{{dados.chave}}">
                     <div class="card card-body">
-                    {{nota}}
+                    {{dados.nota}}
                     </div>
                 </div>
             </div>
-            {% endfor %}
         {% endfor %}
       
 {% endblock conteudo %}
