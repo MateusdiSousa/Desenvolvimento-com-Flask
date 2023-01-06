@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<body>
+    <h3 style="text-align: center;">Lista de frutas</h3>
+    <hr>
+    <ul>
+        {% for fruta in lista %}
+            <li>{{fruta.fruta}}</li>
+        {% endfor %}
+    </ul>
+    
+    <form action="/" method="POST">
+        <div class="mb-3">
+            <label class="form-label" for="fruta">Fruta</label>
+            <input class="form-control" type="text" name="fruta" id="fruta">
+        </div>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+    </form>
+</body>
+</html>
+
+{% endblock conteudo %}

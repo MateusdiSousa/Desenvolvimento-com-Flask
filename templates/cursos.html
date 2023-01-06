@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h1 style="text-align: center;">Lista de Cursos</h1>
+<hr>
+      <table class="table table-hover table-bordered ">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Carga Horária</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody class = 'table-hover'>
+          {% for curso in cursos %}
+            <tr>
+            <th scope="row">{{curso.chave}}</th>
+            <td>{{curso.nome}}</td>
+            <td>{{curso.descricao}}</td>
+            <td>{{curso.carga_h}}</td>
+            <td><a href="{{curso.chave}}/atualiza_curso" class="btn btn-secondary btn-xs">Editar</a></td>
+            <td><a href="{{url_for('deletar', chave = curso.chave)}}" class="btn btn-danger btn-xs">Delete</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+<a href="{{url_for('add_curso')}}"><button type="button" class="btn btn-primary">Adicionar cursos</button></a>
+{% endblock conteudo %}
