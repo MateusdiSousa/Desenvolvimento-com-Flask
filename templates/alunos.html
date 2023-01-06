@@ -18,6 +18,7 @@
     </form>
 
     <div style="margin-top: 10px;">
+<<<<<<< HEAD
         {% for dados in registro %}
             {% for nome, nota in dados.items()  %}
             <div style="margin-top: 10px;">
@@ -33,6 +34,23 @@
                 </div>
             </div>
             {% endfor %}
+=======
+        {% for dados in registros %}
+            <div style="margin-top: 10px;">
+                <p>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample_{{dados.chave}}" role="button" aria-expanded="false" aria-controls="collapseExample{{dados.chave}}">
+                    {{dados.aluno}}
+                    </a>
+                <a class = "btn btn-secondary"href="/{{dados.chave}}/nota">Atualizar</a>
+                <a class="btn btn-danger btn-xl"  href="{{url_for('delete_nota', chave = dados.chave)}}">Delete</a>
+
+                <div class="collapse" id="collapseExample_{{dados.chave}}">
+                    <div class="card card-body">
+                    {{dados.nota}}
+                    </div>
+                </div>
+            </div>
+>>>>>>> parent of e1defc1 (bibliotecas)
         {% endfor %}
       
 {% endblock conteudo %}

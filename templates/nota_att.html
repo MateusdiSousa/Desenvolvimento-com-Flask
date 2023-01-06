@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+    <h3 style="text-align: center;">Caderneta do Professor</h3>
+    <hr>
+    <form method="POST" action="{{url_for('nota_att', chave = registro.chave)}}">
+        <div class="mb-3">
+            <label class="form-label" for="aluno">Nome</label>
+            <input style="color: rgba(56, 12, 160, 0.767)"  class="form-control" value="{{registro.aluno}}" name="aluno" type="text">
+        </div>
+
+        <div class="mb-3">
+    
+            <label class="form-label" for="nota">Nota</label>
+            <input style="color: rgba(56, 12, 160, 0.767);" class="form-control" value="{{registro.nota}}" type="number" name="nota">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Atualiza</button>
+    </form>
+{% endblock conteudo %}
